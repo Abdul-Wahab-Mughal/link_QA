@@ -482,6 +482,10 @@
     <style>
       body {
         margin: 0;
+        background-image: url(/image/4867e00b6037bcf979d5368c79aa5e38.webp);
+        background-size: 100% 150%;
+        background-repeat: no-repeat;
+        width: -webkit-fill-available;
       }
       .training {
         padding: 0 25px;
@@ -633,14 +637,16 @@
         font-weight: 400;
         line-height: 1.25;
       }
+      @media screen and (max-width: 767px) {
+        body {
+          background-size: 100% 200%;
+        }
+        .training .mid_box {
+          width: 100%;
+        }
+      }
     </style>
     <style>
-      body {
-        background-image: url(/image/4867e00b6037bcf979d5368c79aa5e38.webp);
-        background-size: 100% 150%;
-        background-repeat: no-repeat;
-        width: -webkit-fill-available;
-      }
       #train_Video .training_mid {
         width: 100%;
       }
@@ -774,8 +780,6 @@
         document.querySelector("#train_btn").addEventListener("click", () => {
           document.querySelector("#train_start").outerHTML = "";
           document.querySelector("#train_Video").style.display = "flex";
-          document.querySelector("body").style =
-            "background-image: url(/image/4867e00b6037bcf979d5368c79aa5e38.webp); background-size: 100% 100%; background-repeat: no-repeat;";
           setTimeout(() => {
             document
               .querySelector("#train_center_btn")
