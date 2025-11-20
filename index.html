@@ -68,25 +68,25 @@
           <img
             src="https://images.clickfunnels.com/cdn-cgi/image/width=1000px,fit=scale-down,f=auto,q=80/https://statics.myclickfunnels.com/workspace/eWkoVz/image/17558132/file/876d62313b2c425789db0c229f2f423f.gif"
           />
-          <form id="train_form">
-            <div
-              class="in_st"
-              style="width: 100%; position: relative; margin-bottom: 10px"
-            >
-              <input
-                type="email"
-                name="email"
-                id="getemail"
-                placeholder="Email"
-                autocomplete="email"
-                required
-              />
-              <div class="elLabel">
-                <!-- <div class="borderHolder labelText"><label>Email</label></div> -->
-              </div>
+          <div
+            class="in_st"
+            style="width: 100%; position: relative; margin-bottom: 10px"
+          >
+            <input
+              type="email"
+              name="email"
+              id="getemail"
+              placeholder="Email"
+              autocomplete="email"
+              required
+            />
+            <div class="elLabel">
+              <!-- <div class="borderHolder labelText"><label>Email</label></div> -->
             </div>
-            <button type="submit" class="elButton">BEKIJK DE VIDEO</button>
-          </form>
+          </div>
+          <button type="submit" class="elButton" id="train_btn">
+            BEKIJK DE VIDEO
+          </button>
         </div>
       </div>
       <div class="training_bottom">
@@ -872,28 +872,30 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const emailInput = document.querySelector("#getemail");
-        emailInput.addEventListener("invalid", function () {
+        document.querySelector("#train_btn").addEventListener("click", (e) => {
+          e.preventDefault();
+          const emailInput = document.querySelector("#getemail");
+          const emailValue = emailInput.value.trim();
           const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailPattern.test(this.value)) {
-            this.setCustomValidity("In de juiste e-mail");
-          }
-          if (this.value === "") {
-            this.setCustomValidity("Vul dit veld in.");
-          }
-        });
 
-        document
-          .querySelector("#train_form")
-          .addEventListener("submit", (e) => {
-            document.querySelector("#train_start").outerHTML = "";
-            document.querySelector("#train_Video").style.display = "flex";
-            setTimeout(() => {
-              document
-                .querySelector("#train_center_btn")
-                .classList.remove("hid_btn");
-            }, 5000);
-          });
+          // Reset border first
+          emailInput.style.borderColor = "";
+          emailInput.style.outline = "";
+
+          // Empty check
+          if (emailValue === "" || !emailPattern.test(emailValue)) {
+            emailInput.style.outline = "3px solid rgb(185, 21, 23)";
+            return;
+          }
+
+          document.querySelector("#train_start").outerHTML = "";
+          document.querySelector("#train_Video").style.display = "flex";
+          setTimeout(() => {
+            document
+              .querySelector("#train_center_btn")
+              .classList.remove("hid_btn");
+          }, 5000);
+        });
 
         // setTimeout(() => {
         //   document
