@@ -67,16 +67,20 @@
           <img
             src="https://images.clickfunnels.com/cdn-cgi/image/width=1000px,fit=scale-down,f=auto,q=80/https://statics.myclickfunnels.com/workspace/eWkoVz/image/17558132/file/876d62313b2c425789db0c229f2f423f.gif"
           />
-          <div
-            class="in_st"
-            style="width: 100%; position: relative; margin-bottom: 10px"
-          >
-            <input type="email" name="email" placeholder="Email" />
-            <div class="elLabel">
-              <!-- <div class="borderHolder labelText"><label>Email</label></div> -->
+          <form id="train_form">
+            <div
+              class="in_st"
+              style="width: 100%; position: relative; margin-bottom: 10px"
+            >
+              <input type="email" name="email" placeholder="Email" required />
+              <div class="elLabel">
+                <!-- <div class="borderHolder labelText"><label>Email</label></div> -->
+              </div>
             </div>
-          </div>
-          <button class="elButton" id="train_btn">BEKIJK DE VIDEO</button>
+            <button type="submit" class="elButton">
+              BEKIJK DE VIDEO
+            </button>
+          </form>
         </div>
       </div>
       <div class="training_bottom">
@@ -862,7 +866,8 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelector("#train_btn").addEventListener("click", () => {
+        document.querySelector("#train_form").addEventListener("submit", () => {
+
           document.querySelector("#train_start").outerHTML = "";
           document.querySelector("#train_Video").style.display = "flex";
           setTimeout(() => {
@@ -871,11 +876,12 @@
               .classList.remove("hid_btn");
           }, 5000);
         });
+
         // setTimeout(() => {
-        //     document
-        //       .querySelector("#train_center_btn")
-        //       .classList.remove("hid_btn");
-        //   }, 5000);
+        //   document
+        //     .querySelector("#train_center_btn")
+        //     .classList.remove("hid_btn");
+        // }, 5000);
 
         document
           .querySelector("#train_center_btn")
