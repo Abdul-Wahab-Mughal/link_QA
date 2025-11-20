@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="/image/ecom_logo.jpeg" />
 
     <link
       rel="stylesheet"
@@ -72,14 +73,19 @@
               class="in_st"
               style="width: 100%; position: relative; margin-bottom: 10px"
             >
-              <input type="email" name="email" placeholder="Email" required />
+              <input
+                type="email"
+                name="email"
+                id="getemail"
+                placeholder="Email"
+                autocomplete="email"
+                required
+              />
               <div class="elLabel">
                 <!-- <div class="borderHolder labelText"><label>Email</label></div> -->
               </div>
             </div>
-            <button type="submit" class="elButton">
-              BEKIJK DE VIDEO
-            </button>
+            <button type="submit" class="elButton">BEKIJK DE VIDEO</button>
           </form>
         </div>
       </div>
@@ -866,16 +872,17 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelector("#train_form").addEventListener("submit", () => {
-
-          document.querySelector("#train_start").outerHTML = "";
-          document.querySelector("#train_Video").style.display = "flex";
-          setTimeout(() => {
-            document
-              .querySelector("#train_center_btn")
-              .classList.remove("hid_btn");
-          }, 5000);
-        });
+        document
+          .querySelector("#train_form")
+          .addEventListener("submit", (e) => {
+            document.querySelector("#train_start").outerHTML = "";
+            document.querySelector("#train_Video").style.display = "flex";
+            setTimeout(() => {
+              document
+                .querySelector("#train_center_btn")
+                .classList.remove("hid_btn");
+            }, 5000);
+          });
 
         // setTimeout(() => {
         //   document
