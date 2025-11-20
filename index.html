@@ -872,6 +872,17 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        const emailInput = document.querySelector("#getemail");
+        emailInput.addEventListener("invalid", function () {
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(this.value)) {
+            this.setCustomValidity("In de juiste e-mail");
+          }
+          if (this.value === "") {
+            this.setCustomValidity("Vul dit veld in.");
+          }
+        });
+
         document
           .querySelector("#train_form")
           .addEventListener("submit", (e) => {
