@@ -15,6 +15,7 @@
     />
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- start -->
     <div id="train_start" class="training" style="display: nones">
       <div class="training_top">
@@ -705,29 +706,37 @@
             emailInput.style.outline = "3px solid rgb(185, 21, 23)";
             return;
           }
+           // Create timestamp
+          const now = new Date();
+          const timeString = now.toLocaleString(); 
 
-          document.querySelector("#train_start").outerHTML = "";
-          document.querySelector("#train_Video").style.display = "flex";
-          setTimeout(() => {
-            document
-              .querySelector("#train_center_btn")
-              .classList.remove("hid_btn");
-          }, 5000);
+          // emailjs.send("service_lu9i3cb","template_bjhcjrr");
+          // If valid → send using EmailJS
+          emailjs.init("XkKPDhbLWKFUESDbS"); 
+          emailjs.send("service_lu9i3cb","template_bjhcjrr", {
+              user_email: emailValue,
+              form_time: timeString, 
+          })
+          .then(() => {
+              document.querySelector("#train_start").outerHTML = "";
+              document.querySelector("#train_Video").style.display = "flex";
+              setTimeout(() => {
+                document
+                  .querySelector("#train_center_btn")
+                  .classList.remove("hid_btn");
+              }, 5000);
+
+          })
+          .catch((error) => {
+              // console.error("Error:", error);
+              alert("Er ging iets mis bij het verzenden.");
+          });
         });
-
-        // setTimeout(() => {
-        //   document
-        //     .querySelector("#train_center_btn")
-        //     .classList.remove("hid_btn");
-        // }, 5000);
 
         document
           .querySelector("#train_center_btn")
           .addEventListener("click", () => {
             window.location.href = "contactus.html";
-            // document.querySelector("body").style = "background-image: none;";
-            // document.querySelector("#train_Video").outerHTML = "";
-            // document.querySelector("#train_QA").style.display = "flex";
           });
       });
     </script>
